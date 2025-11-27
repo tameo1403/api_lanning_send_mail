@@ -10,7 +10,7 @@ export class MailService {
     this.resend = new Resend(this.config.get('RESEND_API_KEY'));
   }
 
-  async sendMail(name: string, email: string, message: string) {
+  async sendMail(name: string, email: string, message: string, phone: string) {
     try {
       const response = await this.resend.emails.send({
         from: 'Website Contact <noreply@resend.dev>',
@@ -20,6 +20,7 @@ export class MailService {
           <h2>Thông tin liên hệ mới</h2>
           <p><strong>Họ tên:</strong> ${name}</p>
           <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone}</p>
           <p><strong>Nội dung:</strong> ${message}</p>
         `,
       });

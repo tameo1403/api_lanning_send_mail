@@ -12,14 +12,16 @@ export class MailController {
       name: string;
       email: string;
       message: string;
+      phone: string;
     },
   ) {
-    const { name, email, message } = body;
+    const { name, email, message, phone } = body;
 
     try {
-      await this.mailService.sendMail(name, email, message);
+      await this.mailService.sendMail(name, email, message, phone);
       return {
         success: true,
+        status: 200,
         message: 'Gửi email thành công!',
       };
     } catch {
